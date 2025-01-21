@@ -1,0 +1,35 @@
+{
+  "name": "oruga jazzy desktop",
+  "dockerFile": "Dockerfile",
+  "runArgs": [
+    "--privileged",
+    "--network=host",
+    "--ipc=host"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/${localWorkspaceFolderBasename}",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind",
+    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+    "source=/dev,target=/dev,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+        "extensions":[
+          "ms-azuretools.vscode-docker",
+          "ms-vscode.cpptools",
+          "ms-vscode.cpptools-extension-pack",
+          "ms-vscode.cmake-tools",
+          "ms-python.python",
+          "KevinRose.vsc-python-indent",
+          "DavidAnson.vscode-markdownlint",
+          "GitLab.gitlab-workflow",
+          "redhat.vscode-xml"
+        ]
+    }
+  },
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh"
+}

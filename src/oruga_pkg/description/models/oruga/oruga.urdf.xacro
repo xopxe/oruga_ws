@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="oruga">
+    <xacro:arg name="use_gazebo" default="false" />
+    <xacro:arg name="use_imu" default="true" />
+    <xacro:arg name="use_lidar" default="false" />
+    <xacro:arg name="use_camera" default="false" />
+
+    <xacro:include filename="a4wd3.xacro" />
+
+    <xacro:include filename="imu.xacro" />
+    <xacro:oruga_camera use_imu="$(arg use_imu)" use_gazebo="$(arg use_gazebo)"/>
+
+    <xacro:include filename="lidar.xacro" />
+    <xacro:oruga_lidar use_lidar="$(arg use_lidar)" use_gazebo="$(arg use_gazebo)"/>
+
+    <xacro:include filename="camera.xacro" />
+    <xacro:oruga_camera use_camera="$(arg use_camera)" use_gazebo="$(arg use_gazebo)"/>
+
+</robot>
