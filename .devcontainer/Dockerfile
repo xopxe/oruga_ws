@@ -46,6 +46,7 @@ RUN sudo apt-get update \
     ros-${ROS_DISTRO}-ros-gz \
     ros-${ROS_DISTRO}-joint-state-publisher-gui \
     ros-${ROS_DISTRO}-gz-sensors-vendor \
+    ros-${ROS_DISTRO}-rviz-imu-plugin \
     ros-${ROS_DISTRO}-joy \
     ros-${ROS_DISTRO}-v4l2-camera \
     ros-${ROS_DISTRO}-teleop-twist-joy \

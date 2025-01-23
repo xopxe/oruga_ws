@@ -79,16 +79,8 @@ The robot emits multiple topics, do a `ros2 topic list` to explore them.
 For example, to drive the robot in circles, do:
 
 ```sh
-ros2 topic pub --rate 10 /cmd_vel geometry_msgs/msg/TwistStamped "
-twist:
- linear:
- x: 0.1
- y: 0.0
- z: 0.0
- angular:
- x: 0.0
- y: 0.0
- z: 0.1"
+ros2 topic pub /cmd_vel geometry_msgs/msg/TwistStamped "{header: 'auto', twist: {linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}}"
+
 ```
 
 As another example, you can control the robot with a joystick running the provided launch file (in a separate console):

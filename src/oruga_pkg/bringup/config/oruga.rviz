@@ -12,6 +12,8 @@ Panels:
         - /RobotModel1/Links1/fr_wheel_link1
         - /RobotModel1/Links1/rl_wheel_link1
         - /RobotModel1/Links1/rr_wheel_link1
+        - /Odometry1
+        - /Odometry1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 458
   - Class: rviz_common/Selection
@@ -90,6 +92,10 @@ Visualization Manager:
           Show Axes: true
           Show Trail: false
           Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         rl_wheel_link:
           Alpha: 0.5
           Show Axes: true
@@ -144,8 +150,8 @@ Visualization Manager:
         Durability Policy: Volatile
         Filter size: 10
         History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /odometry
+        Reliability Policy: Best Effort
+        Value: /odom
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -216,7 +222,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_footprint
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:

@@ -78,9 +78,6 @@
     <axis xyz="0 1 0 " />
   </joint>
 
-
-
-
   <link name="rl_wheel_link">
     <visual>
       <geometry>
@@ -133,13 +130,6 @@
     <axis xyz="0 1 0 " />
   </joint>
 
-
-
-
-
-
-
-
   <!-- BASE FOOTPRINT -->
   <link name="base_footprint" />
   <joint name="base_joint" type="fixed">
@@ -147,6 +137,5 @@
     <child link="base_link" />
     <origin xyz="0 0 ${wheel_radius-wheel_offset_height}" rpy="0 0 0" />
   </joint>
-
 
 </robot>
