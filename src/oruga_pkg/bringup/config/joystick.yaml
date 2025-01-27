@@ -3,6 +3,14 @@ joy_node:
     device_id: 0
     deadzone: 0.05
     autorepeat_rate: 20.0
+    coalesce_interval_ms: 100
+
+game_controller_node:
+  ros__parameters:
+    device_id: 0
+    deadzone: 0.05
+    autorepeat_rate: 1.0
+    coalesce_interval_ms: 50
 
 teleop_node:
   ros__parameters:
@@ -22,6 +30,6 @@ teleop_node:
     scale_angular_turbo:
       yaw: 1.0
 
-    require_enable_button: true
+    require_enable_button: false
     enable_button: 6  # Left shoulder button
     enable_turbo_button: 7  # Right shoulder button

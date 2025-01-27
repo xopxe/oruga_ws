@@ -12,9 +12,20 @@ def generate_launch_description():
         [pkg_project_bringup, "config", "joystick.yaml"]
     )
 
+    # joy_node does not respect coalesce_interval_ms
+    # https://github.com/ros-drivers/joystick_drivers/issues/284
     joy_node = Node(
         package='joy',
         executable='joy_node',
+        output='screen',
+        parameters=[joy_params],
+        #arguments=['--ros-args', '--log-level', 'DEBUG'],
+    )
+    
+    game_controller_node = Node(
+        package='joy',
+        executable='game_controller_node',
+        output='screen',
         parameters=[joy_params],
     )
     
@@ -27,7 +38,8 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        joy_node, 
-        teleop_node
+        #joy_node,
+        game_controller_node,
+        teleop_node,
     ])
     
