@@ -4,7 +4,7 @@ project(bringup)
 
 find_package(ament_cmake REQUIRED)
 find_package(description REQUIRED)
-find_package(gazebo REQUIRED)
+#find_package(gazebo REQUIRED)
 
 # Install project launch files
 install(

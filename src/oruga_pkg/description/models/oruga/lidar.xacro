@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="oruga_lidar" params="use_lidar use_gazebo">
+  <xacro:macro name="oruga_lidar" params="use_lidar">
 
     <xacro:if value="${use_lidar}">
 
@@ -21,34 +21,6 @@
         <origin xyz="${lidar_offset_length} ${lidar_offset_width} ${lidar_offset_height}"
           rpy="0 0 0" />
       </joint>
-
-      <xacro:if value="$(arg use_gazebo)">
-        <gazebo reference="lidar_link">
-          <!-- LDS-01 LIDAR -->
-          <sensor name="laser" type="gpu_lidar">
-            <pose> 0 0 0 0 0 0 </pose>
-            <visualize>true</visualize>
-            <always_on>true</always_on>
-            <update_rate>10</update_rate>
-            <lidar>
-              <scan>
-                <horizontal>
-                  <samples>360</samples>
-                  <min_angle>-3.14</min_angle>
-                  <max_angle>3.14</max_angle>
-                </horizontal>
-              </scan>
-              <range>
-                <min>0.12</min>
-                <max>3.5</max>
-              </range>
-            </lidar>
-            <topic>scan</topic>
-            <gz_frame_id>lidar_link</gz_frame_id>
-          </sensor>
-        </gazebo>
-      </xacro:if>
-
 
     </xacro:if>
 
