@@ -35,13 +35,6 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
-            "joints_gui",
-            default_value="false",
-            description="Start joint_state_publisher_gui automatically with this launch file.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
             'use_lidar',
             default_value="false",
             description='Enable the lidar sensor.',
@@ -101,13 +94,6 @@ def generate_launch_description():
         condition=IfCondition(gui),
     )
        
-    joint_state_publisher_gui = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui',
-        condition=IfCondition(joints_gui),
-    )
- 
     lidar_node = Node(
         package='hls_lfcd_lds_driver',
         executable='hlds_laser_publisher',
@@ -137,7 +123,6 @@ def generate_launch_description():
         lidar_node,
         camera_node,
         robot_state_pub_node,
-        joint_state_publisher_gui,
     ]
 
     return LaunchDescription(declared_arguments + nodes)

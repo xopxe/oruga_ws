@@ -48,17 +48,18 @@ RUN sudo apt-get update \
     tilix \
     gsettings-desktop-schemas \
     #ros-${ROS_DISTRO}-desktop \
-    ros-${ROS_DISTRO}-dynamixel-hardware \
+    #ros-${ROS_DISTRO}-dynamixel-hardware \
     #ros-${ROS_DISTRO}-gz-ros2-control \
     #ros-${ROS_DISTRO}-gz-sensors-vendor \
-    ros-${ROS_DISTRO}-hls-lfcd-lds-driver \
-    ros-${ROS_DISTRO}-joint-state-publisher-gui \
+    #ros-${ROS_DISTRO}-hls-lfcd-lds-driver \
+    #ros-${ROS_DISTRO}-joint-state-publisher-gui \
     ros-${ROS_DISTRO}-joy \
-    ros-${ROS_DISTRO}-ros-gz \
-    ros-${ROS_DISTRO}-ros2-control \
-    ros-${ROS_DISTRO}-ros2-controllers \
-    ros-${ROS_DISTRO}-rtabmap-ros \
+    #ros-${ROS_DISTRO}-ros-gz \
+    #ros-${ROS_DISTRO}-ros2-control \
+    #ros-${ROS_DISTRO}-ros2-controllers \
+    #ros-${ROS_DISTRO}-rtabmap-ros \
     ros-${ROS_DISTRO}-teleop-twist-joy \
+    ros-${ROS_DISTRO}-teleop-twist-keyboard \
     ros-${ROS_DISTRO}-tf2-tools \
     ros-${ROS_DISTRO}-v4l2-camera \
     && sudo rm -rf /var/lib/apt/lists/*

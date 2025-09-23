@@ -8,8 +8,6 @@
   <license>Apache 2.0</license>
   <author>Jorge Visca</author>
 
-  <depend>joint_state_publisher_gui</depend>
-
   <depend>sdformat_urdf</depend>
   <depend>description</depend>
 

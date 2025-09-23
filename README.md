@@ -42,9 +42,8 @@ If you want to install locally, check the `.devcontainer/Dockerfile` file to see
 
 ```sh
 sudo apt-get install -y \
- ros-${ROS_DISTRO}-joint-state-publisher-gui \
  ros-${ROS_DISTRO}-joy \
- ros-${ROS_DISTRO}-teleop-twist-joy
+ ros-${ROS_DISTRO}-teleop-twist-keyboard
 ```
 
 In Docker, the project is placed in the `/oruga_ws` directory. To rebuild the project, call:
