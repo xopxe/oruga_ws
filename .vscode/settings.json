@@ -6,5 +6,6 @@
         "/opt/ros/jazzy/lib/python3.12/site-packages"
     ],
     "docker.dockerPath": "/usr/bin/docker",
-    "cmake.sourceDirectory": "/oruga_ws/src/oruga_pkg/bringup"
+    "cmake.sourceDirectory": "/oruga_ws/src/oruga_pkg/bringup",
+    "containers.containerCommand": "/usr/bin/docker"
 }

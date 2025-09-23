@@ -6,17 +6,16 @@
     "--network=host",
     "--ipc=host"
   ],
-  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
-  "workspaceFolder": "/${localWorkspaceFolderBasename}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/oruga_ws,type=bind",
+  "workspaceFolder": "/oruga_ws",
   "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/ubuntu/.bash_history,type=bind",
     "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
     "source=/dev,target=/dev,type=bind,consistency=cached"
   ],
   "customizations": {
     "vscode": {
         "extensions":[
-          "ms-azuretools.vscode-docker",
           "ms-vscode.cpptools",
           "ms-vscode.cpptools-extension-pack",
           "ms-vscode.cmake-tools",
@@ -24,7 +23,8 @@
           "KevinRose.vsc-python-indent",
           "DavidAnson.vscode-markdownlint",
           "GitLab.gitlab-workflow",
-          "redhat.vscode-xml"
+          "redhat.vscode-xml",
+          "BlueGlassBlock.better-json5"
         ]
     }
   },

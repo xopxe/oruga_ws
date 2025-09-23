@@ -3,12 +3,10 @@
 <package format="3">
   <name>gazebo</name>
   <version>0.0.0</version>
-  <description>Gazebo-specific implementations for the oruga project</description>
+  <description>Gazebo-specific implementations for the francesca project</description>
   <maintainer email="jvisca@fing.edu.uy">Jorge Visca</maintainer>
   <license>Apache 2.0</license>
   <author>Jorge Visca</author>
-
-  <depend>description</depend>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
