@@ -1,7 +1,7 @@
 
 # Oruga
 
-This the ROS2 system for the Oruga robot. The robot itself a micro-ros-based [firmware](https://github.com/xopxe/micro_rosso_oruga) on its microcontoller.
+This the ROS2 system for the Oruga robot. The robot itself a pico-ros-based [firmware](https://github.com/xopxe/pico-oruga-platformio-espidf) on its microcontoller.
 
 This system provides:
 
@@ -10,10 +10,6 @@ This system provides:
 * ROS2 Jazzy and newer.
 
 * URDF model for the robot.
-
-Pending:
-
-* Gazebo integration.
 
 ## Installation
 
@@ -30,20 +26,20 @@ Then you can run from there:
 ```sh
 docker run -it --privileged --user ubuntu --network=host --ipc=host \
   -v $PWD:/oruga_ws \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /dev:/dev \
   --env=DISPLAY \
- oruga_ws:jazzy /bin/bash
+  oruga_ws:jazzy /bin/bash
 ```
 
 ### Local installation
 
-If you want to install locally, check the `.devcontainer/Dockerfile` file to see what packages are needed:
+If you want to install locally, check the `.devcontainer/Dockerfile` file to see what packages you mivht need need. For example:
 
 ```sh
 sudo apt-get install -y \
- ros-${ROS_DISTRO}-joy \
- ros-${ROS_DISTRO}-teleop-twist-keyboard
+  ros-${ROS_DISTRO}-teleop-twist-keyboard \
+  ros-${ROS_DISTRO}-tf2-tools \
+  ros-${ROS_DISTRO}-v4l2-camera \ 
 ```
 
 In Docker, the project is placed in the `/oruga_ws` directory. To rebuild the project, call:
@@ -55,6 +51,14 @@ colcon build --cmake-args -DBUILD_TESTING=ON --symlink-install
 > [!TIP]
 > If the build fails, try removing the old `install` and `build` directories.
 
+### Aditional services
+
+[!TODO]
+The host must also be running a zenoh router
+
+[!TODO]
+The system must also start a [sync_time](https://github.com/xopxe/ros2_sync_time_service_ws) service
+
 ## Running
 
 To run the robot call:
@@ -62,8 +66,6 @@ To run the robot call:
 ```sh
 ros2 launch bringup oruga.launch.py
 ```
-
-This will not open any window by default, but you can make it open an RViz visualization by passing a `gui:=true` parameter.
 
 ## Controlling the robot
 
@@ -79,11 +81,10 @@ For example, to drive the robot in circles, do:
 ros2 topic pub /cmd_vel geometry_msgs/msg/TwistStamped "{header: 'auto', twist: {linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.1}}}"
 ```
 
-
-[TODO] As another example, you can control the robot with a joystick running the provided launch file (in a separate console):
+To control the robot with the keyboard (in a separate console), run:
 
 ```sh
-ros2 launch bringup joystick.launch.py
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -p stamped:=true
 ```
 
 ## Authors and acknowledgment
