@@ -9,6 +9,7 @@
   <author>Jorge Visca</author>
 
   <depend>sdformat_urdf</depend>
+  <depend>xacro</depend>
   <depend>description</depend>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

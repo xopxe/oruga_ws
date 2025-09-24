@@ -19,16 +19,28 @@ If you want to use the provided Docker image, you can use it directly from VSCod
 
 ```sh
 docker image build --rm -t oruga_ws:jazzy .devcontainer/
+docker run -it --user ubuntu -v $PWD:/oruga_ws oruga_ws:jazzy \
+  /oruga_ws/.devcontainer/postCreateCommand.sh
 ```
 
 Then you can run from there:
 
 ```sh
 docker run -it --privileged --user ubuntu --network=host --ipc=host \
-  -v $PWD:/oruga_ws \
-  -v /dev:/dev \
-  --env=DISPLAY \
-  oruga_ws:jazzy /bin/bash
+  -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY oruga_ws:jazzy
+```
+
+You can also start the Docker without lanchin the robot, just to get a console:
+
+```sh
+docker run -it --privileged --user ubuntu --network=host --ipc=host \
+  -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY oruga_ws:jazzy /bin/bash
+```
+
+From inside the docker you can launch the robot:
+
+```sh
+ros2 launch bringup oruga.launch.py
 ```
 
 ### Local installation

@@ -22,6 +22,8 @@ from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
+#import logging
+#logging.root.setLevel(logging.DEBUG)
 
 def generate_launch_description():
     # Declare arguments
@@ -49,7 +51,6 @@ def generate_launch_description():
     )
     # Initialize Arguments
     gui = LaunchConfiguration("gui")
-    joints_gui = LaunchConfiguration("joints_gui")
     use_lidar = LaunchConfiguration("use_lidar")
     use_camera = LaunchConfiguration("use_camera")
 
