@@ -1,0 +1,13 @@
+[Unit]
+Description=Zenoh-RMW Router
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=exec
+Restart=no
+ExecStart=/home/odroid/zenoh/target/release/zenohd -c /home/odroid/oruga_ws/zenoh_router_config.json5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
