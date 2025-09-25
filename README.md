@@ -15,7 +15,7 @@ This system provides:
 
 ### Using Docker
 
-If you want to use the provided Docker image, you can use it directly from VSCode. You can also build it manually:
+If you want to use the provided Docker image, you can start it directly from VSCode. You can also build it manually:
 
 ```sh
 docker image build --rm -t oruga_ws:jazzy .devcontainer/
@@ -30,38 +30,28 @@ docker run -it --privileged --user ubuntu --network=host --ipc=host \
   -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY oruga_ws:jazzy
 ```
 
-You can also start the Docker without lanchin the robot, just to get a console:
+You can also start the Docker without lanching the robot, start a console and work with ROS 2 as usual:
 
 ```sh
 docker run -it --privileged --user ubuntu --network=host --ipc=host \
   -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY oruga_ws:jazzy /bin/bash
-```
 
-From inside the docker you can launch the robot:
-
-```sh
+# inside the docker terminal:
+colcon build --symlink-install
 ros2 launch bringup oruga.launch.py
 ```
 
 ### Local installation
 
-If you want to install locally, check the `.devcontainer/Dockerfile` file to see what packages you mivht need need. For example:
+A ROS 2 desktop  install should have most of the needed packages already.
+
+For more information, check the `.devcontainer/Dockerfile` file to see what packages you might need. 
+
+To run the robot call:
 
 ```sh
-sudo apt-get install -y \
-  ros-${ROS_DISTRO}-teleop-twist-keyboard \
-  ros-${ROS_DISTRO}-tf2-tools \
-  ros-${ROS_DISTRO}-v4l2-camera \ 
+ros2 launch bringup oruga.launch.py
 ```
-
-In Docker, the project is placed in the `/oruga_ws` directory. To rebuild the project, call:
-
-```sh
-colcon build --cmake-args -DBUILD_TESTING=ON --symlink-install
-```
-
-> [!TIP]
-> If the build fails, try removing the old `install` and `build` directories.
 
 ### Aditional services
 
@@ -70,14 +60,6 @@ The host must also be running a zenoh router
 
 [!TODO]
 The system must also start a [sync_time](https://github.com/xopxe/ros2_sync_time_service_ws) service
-
-## Running
-
-To run the robot call:
-
-```sh
-ros2 launch bringup oruga.launch.py
-```
 
 ## Controlling the robot
 
