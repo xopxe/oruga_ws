@@ -1,0 +1,2 @@
+SUBSYSTEMS=="usb", DRIVERS=="ftdi_sio", ATTRS{interface}=="FT232R USB UART", GROUP="dialout", SYMLINK+="ttyUSB_RS232"
+
