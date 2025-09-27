@@ -125,7 +125,7 @@
       /// Whether multicast scouting is enabled or not
       ///
       /// ROS setting: disable multicast discovery by default
-      enabled: false,
+      enabled: true,
       /// The socket which should be used for multicast scouting
       address: "224.0.0.224:7446",
       /// The network interface which should be used for multicast scouting
@@ -136,7 +136,7 @@
       /// Accepts a single value (e.g. autoconnect: ["router", "peer"])
       /// or different values for router, peer and client (e.g. autoconnect: { router: [], peer: ["router", "peer"] }).
       /// Each value is a list of: "peer", "router" and/or "client".
-      autoconnect: { router: [], peer: ["router", "peer"], client: ["router"] },
+      autoconnect: { router: ["router"], peer: ["router", "peer"], client: ["router"] },
       /// Strategy for autoconnection, mainly to avoid nodes connecting to each other redundantly.
       /// Possible options are:
       /// - "always": always attempt to autoconnect, may result in redundant connections.
