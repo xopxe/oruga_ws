@@ -1,0 +1,21 @@
+[Unit]
+Description=Oruga Robot
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=exec
+Restart=no
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=docker run --init --restart unless-stopped --name %n \
+  --user ubuntu --network=host --ipc=host \
+  -v /home/odroid/oruga_ws:/oruga_ws \
+  -e ROS_DOMAIN_ID=100 \
+  oruga_ws:jazzy
+ExecStop=/usr/bin/docker stop %n
+ExecStop=/usr/bin/docker rm %n
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
