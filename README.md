@@ -11,6 +11,9 @@ This system provides:
 
 * URDF model for the robot.
 
+![Oruga robot](https://github.com/xopxe/pico-oruga-platformio-espidf/blob/main/docs/oruga.jpg?raw=true)
+
+
 ## Installation
 
 ### Using Docker
