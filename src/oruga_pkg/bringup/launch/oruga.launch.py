@@ -119,7 +119,14 @@ def generate_launch_description():
         condition=IfCondition(use_camera),
     )
 
+    sync_time_node = Node(
+        package="sync_time",
+        executable="sync_time_node",
+        output="both",
+    )
+
     nodes = [
+        sync_time_node,
         rviz_node,
         lidar_node,
         camera_node,

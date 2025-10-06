@@ -1,0 +1,3 @@
+[submodule "src/sync_time"]
+	path = src/sync_time
+	url = https://github.com/xopxe/sync_time.git

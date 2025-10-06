@@ -16,6 +16,19 @@ This system provides:
 
 ## Installation
 
+This workspace uses submodules. Clone this workspace as:
+
+```sh
+git clone --recurse-submodules https://github.com/xopxe/oruga_ws.git
+```
+
+Alternatively, you can update the submodule from inside the cloned repo:
+
+```sh
+git submodule init
+got submodule update
+```
+
 ### Using Docker
 
 If you want to use the provided Docker image, you can start it directly from VSCode. You can also build it manually:
@@ -60,9 +73,6 @@ ros2 launch bringup oruga.launch.py
 
 [!TODO]
 The host must also be running a zenoh router
-
-[!TODO]
-The system must also start a [sync_time](https://github.com/xopxe/ros2_sync_time_service_ws) service
 
 ## Controlling the robot
 
