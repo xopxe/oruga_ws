@@ -34,28 +34,48 @@ got submodule update
 If you want to use the provided Docker image, you can start it directly from VSCode. You can also build it manually:
 
 ```sh
+# Create the image
 docker image build --rm -t oruga_ws:jazzy .devcontainer/
+
+# Initialize the container
 docker run -it --user ubuntu -v $PWD:/oruga_ws oruga_ws:jazzy \
   /oruga_ws/.devcontainer/postCreateCommand.sh
 ```
 
-Then you can run from there:
+Then you can start the robot:
 
 ```sh
 docker run -it --privileged --user ubuntu --network=host --ipc=host \
-  -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY oruga_ws:jazzy
+  -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY \
+  -e ROS_DOMAIN_ID=100 \
+  --name oruga_robot --rm \
+  oruga_ws:jazzy
 ```
 
-You can also start the Docker without lanching the robot, start a console and work with ROS 2 as usual:
+You can also start the Docker without launching the robot, start a console and work with ROS 2 as usual:
 
 ```sh
+# To start the container
 docker run -it --privileged --user ubuntu --network=host --ipc=host \
-  -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY oruga_ws:jazzy /bin/bash
+  -v $PWD:/oruga_ws -v /dev:/dev --env=DISPLAY \
+  --name oruga_robot --rm \
+  oruga_ws:jazzy \
+  /bin/bash
 
 # inside the docker terminal:
 colcon build --symlink-install
 ros2 launch bringup oruga.launch.py
 ```
+
+You can connect to a running docker to run additional terminals:
+
+```sh
+ docker container exec -it oruga_robot /usr/bin/bash
+```
+
+> [!TIP]
+> Instead of running /bin/bash from the docker you can run tilix, a tiling graphical console.
+
 
 ### Local installation
 
@@ -67,6 +87,31 @@ To run the robot call:
 
 ```sh
 ros2 launch bringup oruga.launch.py
+```
+
+## Run the docker as `systemd` service
+
+Edit `util/oruga_ws.service` file, set path to this directory in the ExecStart line (just after the `-v`). Then:
+
+```sh
+sudo cp -v util/oruga_ws.service /etc/systemd/system
+sudo systemctl enable oruga_ws.service
+sudo systemctl start oruga_ws.service
+```
+
+Verify it is working:
+
+```sh
+sudo systemctl status oruga_ws.service
+sudo journalctl -f -u oruga_ws.service
+```
+
+To uninstall:
+
+```sh
+sudo systemctl stop rmw_zenoh_router.service
+sudo systemctl disable rmw_zenoh_router.service
+sudo systemctl daemon-reload
 ```
 
 ### Aditional services

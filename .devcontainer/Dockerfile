@@ -63,7 +63,7 @@ RUN sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh \
 
 WORKDIR /oruga_ws
 
-ENV ROS_DOMAIN_ID=1
+ENV ROS_DOMAIN_ID=100
 ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ENV ZENOH_ROUTER_CONFIG_URI=/oruga_ws/zenoh_router_config.json5
 ENV ZENOH_SESSION_CONFIG_URI=/oruga_ws/zenoh_session_config.json5
