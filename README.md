@@ -86,10 +86,16 @@ For more information, check the `.devcontainer/Dockerfile` file to see what pack
 To run the robot call:
 
 ```sh
+export ROSDOMAIN_ID=100
+sudo -E rosdep install --from-paths src --ignore-src -y
+colcon build --symlink-install
+source install/setup.sh
 ros2 launch bringup oruga.launch.py
 ```
 
-## Run the docker as `systemd` service
+You might have to delete the `build` folder if you have compiled from the Docker before.
+
+### Run the docker as `systemd` service
 
 Edit `util/oruga_ws.service` file, set path to this directory in the ExecStart line (just after the `-v`). Then:
 
