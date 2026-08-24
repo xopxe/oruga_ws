@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd /oruga_ws/src
+git clone https://github.com/xopxe/sync_time.git
+
 cd /oruga_ws
 sudo -E rosdep install --from-paths src --ignore-src -y
 
