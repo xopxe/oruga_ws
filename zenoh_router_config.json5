@@ -34,6 +34,7 @@
     ///
     /// See https://docs.rs/zenoh/latest/zenoh/config/struct.EndPoint.html
     endpoints: [
+      "tls/179.27.99.84:7448",
       // "<proto>/<address>"
     ],
 
@@ -533,17 +534,17 @@
         /// Path to the certificate of the certificate authority used to validate either the server
         /// or the client's keys and certificates, depending on the node's mode. If not specified
         /// on router mode then the default WebPKI certificates are used instead.
-        root_ca_certificate: null,
+        root_ca_certificate: "/home/odroid/oruga_ws/tls/minica.pem",
         /// Path to the TLS listening side private key
         listen_private_key: null,
         /// Path to the TLS listening side public certificate
         listen_certificate: null,
         ///  Enables mTLS (mutual authentication), client authentication
-        enable_mtls: false,
+        enable_mtls: true,
         /// Path to the TLS connecting side private key
-        connect_private_key: null,
+        connect_private_key: "/home/odroid/oruga_ws/tls/key.pem",
         /// Path to the TLS connecting side certificate
-        connect_certificate: null,
+        connect_certificate: "/home/odroid/oruga_ws/tls/cert.pem",
         // Whether or not to verify the matching between hostname/dns and certificate when connecting,
         // if set to false zenoh will disregard the common names of the certificates when verifying servers.
         // This could be dangerous because your CA can have signed a server cert for foo.com, that's later being used to host a server at baz.com.
