@@ -14,22 +14,7 @@ This system provides:
 ![Oruga robot](https://github.com/xopxe/pico-oruga-platformio-espidf/blob/main/docs/oruga.jpg?raw=true)
 
 
-## Installation
-
-This workspace uses submodules. Clone this workspace as:
-
-```sh
-git clone --recurse-submodules https://github.com/xopxe/oruga_ws.git
-```
-
-Alternatively, you can update the submodule from inside the cloned repo:
-
-```sh
-git submodule init
-got submodule update
-```
-
-### Using Docker
+## Using Docker
 
 If you want to use the provided Docker image, you can start it directly from VSCode. You can also build it manually:
 
@@ -76,12 +61,16 @@ You can connect to a running docker to run additional terminals:
 > [!TIP]
 > Instead of running /bin/bash from the docker you can run tilix, a tiling graphical console.
 
-
-### Local installation
+## Local installation
 
 A ROS 2 desktop  install should have most of the needed packages already.
 
-For more information, check the `.devcontainer/Dockerfile` file to see what packages you might need. 
+For more information, check the `.devcontainer/Dockerfile` file to see what packages you might need. Also fetch the `time_sync` dependency:
+
+```sh
+cd oruga_ws/src
+git clone https://github.com/xopxe/sync_time.git
+```
 
 To run the robot call:
 
@@ -95,7 +84,7 @@ ros2 launch bringup oruga.launch.py
 
 You might have to delete the `build` folder if you have compiled from the Docker before.
 
-### Run the docker as `systemd` service
+## Run the docker as `systemd` service
 
 Edit `util/oruga_ws.service` file, set path to this directory in the ExecStart line (just after the `-v`). Then:
 
@@ -120,7 +109,7 @@ sudo systemctl disable rmw_zenoh_router.service
 sudo systemctl daemon-reload
 ```
 
-### Aditional services
+## Aditional services
 
 [!TODO]
 The host must also be running a zenoh router
