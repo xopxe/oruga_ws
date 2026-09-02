@@ -13,7 +13,6 @@ This system provides:
 
 ![Oruga robot](https://github.com/xopxe/pico-oruga-platformio-espidf/blob/main/docs/oruga.jpg?raw=true)
 
-
 ## Using Docker
 
 If you want to use the provided Docker image, you can start it directly from VSCode. You can also build it manually:
@@ -65,11 +64,16 @@ You can connect to a running docker to run additional terminals:
 
 A ROS 2 desktop  install should have most of the needed packages already.
 
-For more information, check the `.devcontainer/Dockerfile` file to see what packages you might need. Also fetch the `time_sync` dependency:
+For more information, check the `.devcontainer/Dockerfile` file to see what packages you might need. This repo pulls in the `sync_time` dependency as a git submodule, so fetch it too when cloning it:
 
 ```sh
-cd oruga_ws/src
-git clone https://github.com/xopxe/sync_time.git
+git clone --recurse-submodules https://github.com/xopxe/oruga_ws.git
+```
+
+...or if you already cloned it:
+
+```sh
+git submodule update --init --recursive
 ```
 
 To run the robot call:
